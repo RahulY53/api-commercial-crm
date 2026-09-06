@@ -1,0 +1,19 @@
+.DS_Store
+.bench/
+.docker-data/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Frontend
+node_modules/
+dist/
+
+# Local environment and secrets
+.env
+sites/
+

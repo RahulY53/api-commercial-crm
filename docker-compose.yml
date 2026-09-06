@@ -1,0 +1,41 @@
+name: api-commercial-crm
+
+services:
+  mariadb:
+    image: mariadb:10.8
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+      - --skip-innodb-read-only-compressed
+    environment:
+      MYSQL_ROOT_PASSWORD: "123"
+    volumes:
+      - mariadb-data:/var/lib/mysql
+
+  redis:
+    image: redis:alpine
+
+  frappe:
+    image: frappe/bench:latest
+    command: bash /workspace/docker/init.sh
+    environment:
+      SHELL: /bin/bash
+    working_dir: /home/frappe
+    volumes:
+      - .:/workspace
+      - ./.bench:/home/frappe/frappe-bench
+      - .:/home/frappe/frappe-bench/apps/api_commercial
+    ports:
+      - "8000:8000"
+      - "9000:9000"
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    depends_on:
+      - mariadb
+      - redis
+
+volumes:
+  mariadb-data:
