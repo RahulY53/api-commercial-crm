@@ -1,0 +1,99 @@
+{
+ "custom_fields": [
+  {
+   "dt": "CRM Organization",
+   "fieldname": "custom_api_commercial_section",
+   "fieldtype": "Section Break",
+   "insert_after": "address",
+   "label": "API Commercial"
+  },
+  {
+   "dt": "CRM Organization",
+   "fieldname": "custom_parent_customer",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "insert_after": "custom_api_commercial_section",
+   "label": "Parent Customer",
+   "options": "CRM Organization",
+   "search_index": 1
+  },
+  {
+   "dt": "CRM Organization",
+   "fieldname": "custom_account_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "insert_after": "custom_parent_customer",
+   "label": "Account Type",
+   "options": "\nGlobal Parent\nOperating Customer\nProspect\nOther"
+  },
+  {
+   "dt": "CRM Organization",
+   "fieldname": "custom_country",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "insert_after": "custom_account_type",
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "dt": "CRM Organization",
+   "fieldname": "custom_api_commercial_column",
+   "fieldtype": "Column Break",
+   "insert_after": "custom_country"
+  },
+  {
+   "dt": "CRM Organization",
+   "fieldname": "custom_region",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "insert_after": "custom_api_commercial_column",
+   "label": "Region",
+   "options": "Region",
+   "search_index": 1
+  },
+  {
+   "default": "Active",
+   "dt": "CRM Organization",
+   "fieldname": "custom_customer_status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "insert_after": "custom_region",
+   "label": "Customer Status",
+   "options": "Active\nInactive\nProspect"
+  },
+  {
+   "default": "0",
+   "dt": "CRM Organization",
+   "fieldname": "custom_is_key_account",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "insert_after": "custom_customer_status",
+   "label": "Key Account"
+  },
+  {
+   "description": "Identifier placeholder only. Phase 1 contains no SAP integration.",
+   "dt": "CRM Organization",
+   "fieldname": "custom_sap_customer_id",
+   "fieldtype": "Data",
+   "insert_after": "custom_is_key_account",
+   "label": "SAP Customer ID"
+  }
+ ],
+ "custom_perms": [],
+ "doctype": "CRM Organization",
+ "links": [
+  {"group": "API Commercial", "link_doctype": "Manufacturing Site", "link_fieldname": "customer", "parent": "CRM Organization"},
+  {"group": "API Commercial", "link_doctype": "Contact Affiliation", "link_fieldname": "customer", "parent": "CRM Organization"},
+  {"group": "API Commercial", "link_doctype": "Account Assignment", "link_fieldname": "customer", "parent": "CRM Organization"}
+ ],
+ "property_setters": [
+  {
+   "doc_type": "CRM Organization",
+   "doctype_or_field": "DocType",
+   "property": "track_changes",
+   "property_type": "Check",
+   "value": "1"
+  }
+ ],
+ "sync_on_migrate": 1
+}

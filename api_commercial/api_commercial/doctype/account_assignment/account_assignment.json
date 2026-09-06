@@ -6,8 +6,8 @@
  "engine": "InnoDB",
  "field_order": ["customer", "user", "assignment_type", "primary", "start_date", "end_date", "active"],
  "fields": [
-  {"fieldname": "customer", "fieldtype": "Link", "in_list_view": 1, "label": "Customer", "options": "CRM Organization", "reqd": 1},
-  {"fieldname": "user", "fieldtype": "Link", "in_list_view": 1, "label": "User", "options": "User", "reqd": 1},
+  {"fieldname": "customer", "fieldtype": "Link", "in_list_view": 1, "label": "Customer", "options": "CRM Organization", "reqd": 1, "search_index": 1},
+  {"fieldname": "user", "fieldtype": "Link", "in_list_view": 1, "label": "User", "options": "User", "reqd": 1, "search_index": 1},
   {"fieldname": "assignment_type", "fieldtype": "Link", "in_list_view": 1, "label": "Assignment Type", "options": "Account Assignment Type", "reqd": 1},
   {"default": "0", "fieldname": "primary", "fieldtype": "Check", "label": "Primary"},
   {"fieldname": "start_date", "fieldtype": "Date", "label": "Start Date"},

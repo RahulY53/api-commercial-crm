@@ -1,0 +1,39 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "format:CA-{#####}",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["contact", "affiliation_type", "customer", "manufacturing_site", "position_section", "designation", "department", "role", "relationship_section", "influence_level", "relationship_strength", "primary_affiliation", "start_date", "end_date", "active", "notes"],
+ "fields": [
+  {"fieldname": "contact", "fieldtype": "Link", "in_list_view": 1, "in_standard_filter": 1, "label": "Contact", "options": "Contact", "reqd": 1, "search_index": 1},
+  {"fieldname": "affiliation_type", "fieldtype": "Select", "in_list_view": 1, "label": "Affiliation Type", "options": "Customer\nManufacturing Site", "reqd": 1},
+  {"fieldname": "customer", "fieldtype": "Link", "in_list_view": 1, "in_standard_filter": 1, "label": "Customer", "mandatory_depends_on": "eval:doc.affiliation_type=='Customer'", "options": "CRM Organization", "search_index": 1},
+  {"depends_on": "eval:doc.affiliation_type=='Manufacturing Site'", "fieldname": "manufacturing_site", "fieldtype": "Link", "label": "Manufacturing Site", "options": "Manufacturing Site", "search_index": 1},
+  {"fieldname": "position_section", "fieldtype": "Section Break", "label": "Position"},
+  {"fieldname": "designation", "fieldtype": "Data", "label": "Designation"},
+  {"fieldname": "department", "fieldtype": "Data", "label": "Department"},
+  {"fieldname": "role", "fieldtype": "Data", "label": "Role"},
+  {"fieldname": "relationship_section", "fieldtype": "Section Break", "label": "Relationship"},
+  {"fieldname": "influence_level", "fieldtype": "Select", "label": "Influence Level", "options": "\nLow\nMedium\nHigh"},
+  {"fieldname": "relationship_strength", "fieldtype": "Select", "label": "Relationship Strength", "options": "\nWeak\nDeveloping\nStrong"},
+  {"default": "0", "fieldname": "primary_affiliation", "fieldtype": "Check", "label": "Primary Affiliation"},
+  {"fieldname": "start_date", "fieldtype": "Date", "label": "Start Date"},
+  {"fieldname": "end_date", "fieldtype": "Date", "label": "End Date"},
+  {"default": "1", "fieldname": "active", "fieldtype": "Check", "in_list_view": 1, "label": "Active"},
+  {"fieldname": "notes", "fieldtype": "Text Editor", "label": "Notes"}
+ ],
+ "links": [],
+ "module": "Api Commercial",
+ "name": "Contact Affiliation",
+ "naming_rule": "Expression",
+ "permissions": [
+  {"create": 1, "delete": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "System Manager", "share": 1, "write": 1},
+  {"create": 1, "delete": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "CRM Admin", "share": 1, "write": 1}
+ ],
+ "search_fields": "contact,customer,manufacturing_site,designation,department",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

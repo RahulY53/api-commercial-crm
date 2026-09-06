@@ -44,6 +44,11 @@ Pipeline -- Pipeline Stage -- Product Opportunity.current_stage
 form cycles. Region is required on operating Customers and is never inferred
 from Target Market.
 
+These app-owned fields use Frappe's required `custom_` prefix in storage. Contact
+Affiliation stores Customer on every record, deriving it from Manufacturing Site
+for site affiliations. This explicit, indexed Customer scope avoids a Dynamic
+Link permission query and makes inherited access auditable.
+
 `CRM Product` gains molecule, category, therapeutic area, product owner,
 commercial status, standard UOM, standard pack size, and notes. All normal CRM
 business roles receive read access; edit access is controlled separately.

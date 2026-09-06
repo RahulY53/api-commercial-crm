@@ -1,0 +1,38 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "format:MS-{#####}",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["site_name", "customer", "site_type", "active", "location_section", "address", "city", "state", "country", "integration_section", "sap_site_code", "notes"],
+ "fields": [
+  {"fieldname": "site_name", "fieldtype": "Data", "in_global_search": 1, "in_list_view": 1, "label": "Site Name", "reqd": 1},
+  {"fieldname": "customer", "fieldtype": "Link", "in_list_view": 1, "in_standard_filter": 1, "label": "Customer", "options": "CRM Organization", "reqd": 1, "search_index": 1},
+  {"fieldname": "site_type", "fieldtype": "Select", "in_list_view": 1, "in_standard_filter": 1, "label": "Site Type", "options": "API Manufacturing\nFormulation Manufacturing\nR&D\nPackaging\nDistribution\nCorporate/Commercial\nOther", "reqd": 1},
+  {"default": "1", "fieldname": "active", "fieldtype": "Check", "in_list_view": 1, "label": "Active"},
+  {"fieldname": "location_section", "fieldtype": "Section Break", "label": "Location"},
+  {"fieldname": "address", "fieldtype": "Link", "label": "Address", "options": "Address"},
+  {"fieldname": "city", "fieldtype": "Data", "label": "City"},
+  {"fieldname": "state", "fieldtype": "Data", "label": "State"},
+  {"fieldname": "country", "fieldtype": "Link", "label": "Country", "options": "Country"},
+  {"fieldname": "integration_section", "fieldtype": "Section Break", "label": "Identifiers and Notes"},
+  {"description": "Identifier placeholder only. Phase 1 contains no SAP integration.", "fieldname": "sap_site_code", "fieldtype": "Data", "label": "SAP Site Code"},
+  {"fieldname": "notes", "fieldtype": "Text Editor", "label": "Notes"}
+ ],
+ "links": [
+  {"group": "API Commercial", "link_doctype": "Contact Affiliation", "link_fieldname": "manufacturing_site"}
+ ],
+ "module": "Api Commercial",
+ "name": "Manufacturing Site",
+ "naming_rule": "Expression",
+ "permissions": [
+  {"create": 1, "delete": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "System Manager", "share": 1, "write": 1},
+  {"create": 1, "delete": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "CRM Admin", "share": 1, "write": 1}
+ ],
+ "search_fields": "site_name,customer,city,country",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "site_name",
+ "track_changes": 1
+}

@@ -6,8 +6,8 @@
  "engine": "InnoDB",
  "field_order": ["user", "region", "membership_role", "primary_region", "start_date", "end_date", "active"],
  "fields": [
-  {"fieldname": "user", "fieldtype": "Link", "in_list_view": 1, "label": "User", "options": "User", "reqd": 1},
-  {"fieldname": "region", "fieldtype": "Link", "in_list_view": 1, "label": "Region", "options": "Region", "reqd": 1},
+  {"fieldname": "user", "fieldtype": "Link", "in_list_view": 1, "label": "User", "options": "User", "reqd": 1, "search_index": 1},
+  {"fieldname": "region", "fieldtype": "Link", "in_list_view": 1, "label": "Region", "options": "Region", "reqd": 1, "search_index": 1},
   {"fieldname": "membership_role", "fieldtype": "Link", "in_list_view": 1, "label": "Membership Role", "options": "Region Membership Role", "reqd": 1},
   {"default": "0", "fieldname": "primary_region", "fieldtype": "Check", "label": "Primary Region"},
   {"fieldname": "start_date", "fieldtype": "Date", "label": "Start Date"},

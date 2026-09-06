@@ -69,10 +69,11 @@ Microsoft Graph, or LLM-specific code.
 
 ## Delivery milestones
 
-1. Foundation: pinned environment, architecture records, CI, smoke tests.
-2. Organisation: Region, membership, account assignment, GAM hierarchy.
-3. Customer: Organization extensions, Manufacturing Site, Contact Affiliation.
-4. Catalogue: CRM Product extensions and Product Responsibility.
+1. **Complete:** Foundation: pinned environment, architecture records, CI, smoke tests.
+2. **Complete:** Organisation: Region, membership, account assignment, GAM hierarchy service.
+3. **Complete (model):** Customer: Organization extensions, Manufacturing Site,
+   Contact Affiliation. Customer-facing navigation remains in milestone 7.
+4. **Next:** Catalogue: CRM Product extensions and Product Responsibility.
 5. Opportunity: Product Opportunity, pipelines, stages, markets, stakeholders.
 6. Security: additive server-side visibility and persona tests.
 7. Experience: navigation, Customer 360, Product Opportunity 360.
