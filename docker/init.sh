@@ -5,9 +5,11 @@ BENCH_DIR=/home/frappe/frappe-bench
 SITE_NAME=api-crm.localhost
 CUSTOM_APP=api_commercial
 CUSTOM_APP_DIR="$BENCH_DIR/apps/$CUSTOM_APP"
+FRAPPE_REF=v15.120.0
+CRM_REF=v1.83.0
 
 if [ ! -d "$BENCH_DIR/apps/frappe" ]; then
-	bench init --ignore-exist --skip-redis-config-generation "$BENCH_DIR" --version version-15
+	bench init --ignore-exist --skip-redis-config-generation "$BENCH_DIR" --version "$FRAPPE_REF"
 fi
 
 cd "$BENCH_DIR"
@@ -21,7 +23,7 @@ sed -i '/redis/d' ./Procfile
 sed -i '/watch/d' ./Procfile
 
 if [ ! -d "$BENCH_DIR/apps/crm" ]; then
-	bench get-app crm --branch main
+	bench get-app crm --branch "$CRM_REF"
 fi
 
 if ! grep -qx "$CUSTOM_APP" "$BENCH_DIR/sites/apps.txt"; then

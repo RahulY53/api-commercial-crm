@@ -1,0 +1,23 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:role_name",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["role_name", "active"],
+ "fields": [
+  {"fieldname": "role_name", "fieldtype": "Data", "in_list_view": 1, "label": "Role Name", "reqd": 1, "unique": 1},
+  {"default": "1", "fieldname": "active", "fieldtype": "Check", "in_list_view": 1, "label": "Active"}
+ ],
+ "module": "Api Commercial",
+ "name": "Region Membership Role",
+ "naming_rule": "By fieldname",
+ "permissions": [
+  {"create": 1, "delete": 1, "read": 1, "role": "System Manager", "write": 1},
+  {"create": 1, "delete": 1, "read": 1, "role": "CRM Admin", "write": 1}
+ ],
+ "sort_field": "role_name",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1
+}

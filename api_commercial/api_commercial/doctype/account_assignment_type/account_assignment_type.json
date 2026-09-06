@@ -1,0 +1,24 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:assignment_type",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["assignment_type", "cascade_to_descendants", "active"],
+ "fields": [
+  {"fieldname": "assignment_type", "fieldtype": "Data", "in_list_view": 1, "label": "Assignment Type", "reqd": 1, "unique": 1},
+  {"default": "0", "description": "Grant visibility to descendant Customers, for example a Global Account Manager.", "fieldname": "cascade_to_descendants", "fieldtype": "Check", "label": "Cascade to Descendants"},
+  {"default": "1", "fieldname": "active", "fieldtype": "Check", "in_list_view": 1, "label": "Active"}
+ ],
+ "module": "Api Commercial",
+ "name": "Account Assignment Type",
+ "naming_rule": "By fieldname",
+ "permissions": [
+  {"create": 1, "delete": 1, "read": 1, "role": "System Manager", "write": 1},
+  {"create": 1, "delete": 1, "read": 1, "role": "CRM Admin", "write": 1}
+ ],
+ "sort_field": "assignment_type",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1
+}

@@ -3,11 +3,16 @@
 Phase 1 of a commercial CRM for an Active Pharmaceutical Ingredient business.
 
 The application extends Frappe Framework and Frappe CRM without modifying or
-forking their core code. The supported local development baseline is:
+forking their core code. The reproducible development baseline is:
 
-- Frappe Framework: `version-15`
-- Frappe CRM: `main` (stable v1.x)
+- Frappe Framework: `v15.120.0`
+- Frappe CRM: `v1.83.0`
 - Custom application: `api_commercial`
+
+Phase 1 architecture and scope decisions are recorded in
+[`docs/architecture.md`](docs/architecture.md). The planned schema and access
+rules are in [`docs/data-model.md`](docs/data-model.md) and
+[`docs/security.md`](docs/security.md).
 
 ## Local development
 
@@ -27,4 +32,3 @@ site, so it can take several minutes. When setup completes, open:
 
 Generated bench files and database data remain in Docker volumes and are not
 committed to this repository.
-

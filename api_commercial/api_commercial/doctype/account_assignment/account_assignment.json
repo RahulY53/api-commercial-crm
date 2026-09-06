@@ -1,0 +1,29 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "format:AA-{#####}",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["customer", "user", "assignment_type", "primary", "start_date", "end_date", "active"],
+ "fields": [
+  {"fieldname": "customer", "fieldtype": "Link", "in_list_view": 1, "label": "Customer", "options": "CRM Organization", "reqd": 1},
+  {"fieldname": "user", "fieldtype": "Link", "in_list_view": 1, "label": "User", "options": "User", "reqd": 1},
+  {"fieldname": "assignment_type", "fieldtype": "Link", "in_list_view": 1, "label": "Assignment Type", "options": "Account Assignment Type", "reqd": 1},
+  {"default": "0", "fieldname": "primary", "fieldtype": "Check", "label": "Primary"},
+  {"fieldname": "start_date", "fieldtype": "Date", "label": "Start Date"},
+  {"fieldname": "end_date", "fieldtype": "Date", "label": "End Date"},
+  {"default": "1", "fieldname": "active", "fieldtype": "Check", "in_list_view": 1, "label": "Active"}
+ ],
+ "links": [],
+ "module": "Api Commercial",
+ "name": "Account Assignment",
+ "naming_rule": "Expression",
+ "permissions": [
+  {"create": 1, "delete": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "System Manager", "share": 1, "write": 1},
+  {"create": 1, "delete": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "CRM Admin", "share": 1, "write": 1}
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

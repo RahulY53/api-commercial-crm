@@ -1,0 +1,29 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "format:RM-{#####}",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["user", "region", "membership_role", "primary_region", "start_date", "end_date", "active"],
+ "fields": [
+  {"fieldname": "user", "fieldtype": "Link", "in_list_view": 1, "label": "User", "options": "User", "reqd": 1},
+  {"fieldname": "region", "fieldtype": "Link", "in_list_view": 1, "label": "Region", "options": "Region", "reqd": 1},
+  {"fieldname": "membership_role", "fieldtype": "Link", "in_list_view": 1, "label": "Membership Role", "options": "Region Membership Role", "reqd": 1},
+  {"default": "0", "fieldname": "primary_region", "fieldtype": "Check", "label": "Primary Region"},
+  {"fieldname": "start_date", "fieldtype": "Date", "label": "Start Date"},
+  {"fieldname": "end_date", "fieldtype": "Date", "label": "End Date"},
+  {"default": "1", "fieldname": "active", "fieldtype": "Check", "in_list_view": 1, "label": "Active"}
+ ],
+ "links": [],
+ "module": "Api Commercial",
+ "name": "Region Membership",
+ "naming_rule": "Expression",
+ "permissions": [
+  {"create": 1, "delete": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "System Manager", "share": 1, "write": 1},
+  {"create": 1, "delete": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "CRM Admin", "share": 1, "write": 1}
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

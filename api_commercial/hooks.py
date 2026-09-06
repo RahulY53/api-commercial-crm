@@ -10,6 +10,9 @@ app_license = "mit"
 
 required_apps = ["crm"]
 
+after_install = "api_commercial.setup.after_install"
+after_migrate = "api_commercial.setup.after_migrate"
+
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
 # 	{
