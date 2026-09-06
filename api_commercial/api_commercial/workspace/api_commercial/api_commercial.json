@@ -7,7 +7,7 @@
  "hide_custom": 0,
  "icon": "organization",
  "is_hidden": 0,
- "label": "API Commercial",
+ "label": "Arkenstone CRM",
  "links": [
   {"hidden": 0, "label": "Commercial Records", "link_count": 6, "type": "Card Break"},
   {"hidden": 0, "label": "Customers", "link_to": "CRM Organization", "link_type": "DocType", "type": "Link"},
@@ -50,5 +50,5 @@
   {"label": "Customers", "link_to": "CRM Organization", "type": "DocType"},
   {"label": "Products", "link_to": "CRM Product", "type": "DocType"}
  ],
- "title": "API Commercial"
+ "title": "Arkenstone CRM"
 }

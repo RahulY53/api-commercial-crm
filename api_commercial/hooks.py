@@ -1,5 +1,5 @@
 app_name = "api_commercial"
-app_title = "Api Commercial"
+app_title = "Arkenstone CRM"
 app_publisher = "Rahul Yelisetti"
 app_description = "Commercial CRM for an Active Pharmaceutical Ingredient business"
 app_email = "RahulY53@gmail.com"
@@ -10,11 +10,13 @@ app_license = "mit"
 
 required_apps = ["crm"]
 
+app_logo_url = "/assets/api_commercial/images/arkenstone-logo.png"
+
 add_to_apps_screen = [
 	{
 		"name": "api_commercial",
-		"logo": "/assets/api_commercial/images/api-commercial.svg",
-		"title": "API Commercial",
+		"logo": "/assets/api_commercial/images/arkenstone-logo.png",
+		"title": "Arkenstone CRM",
 		"route": "/app/api-commercial",
 	}
 ]

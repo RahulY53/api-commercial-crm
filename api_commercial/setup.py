@@ -1,6 +1,11 @@
 import frappe
 
 
+BRAND_NAME = "Arkenstone CRM"
+BRAND_LOGO = "/assets/api_commercial/images/arkenstone-logo.png"
+BRAND_FAVICON = "/assets/api_commercial/images/arkenstone-favicon.png"
+REPLACEABLE_BRAND_NAMES = {"", "Frappe", "Frappe CRM", "CRM", "API Commercial", "Api Commercial"}
+
 BUSINESS_ROLES = (
 	"Account Manager",
 	"Region Head",
@@ -44,10 +49,42 @@ OPPORTUNITY_STAKEHOLDER_ROLES = (
 
 def after_install():
 	seed_phase_one_masters()
+	seed_branding()
 
 
 def after_migrate():
 	seed_phase_one_masters()
+	seed_branding()
+
+
+def seed_branding():
+	"""Apply Arkenstone branding without overwriting later administrator choices."""
+	settings = (
+		("FCRM Settings", "brand_name", BRAND_NAME),
+		("FCRM Settings", "brand_logo", BRAND_LOGO),
+		("FCRM Settings", "favicon", BRAND_FAVICON),
+		("System Settings", "app_name", BRAND_NAME),
+		("Website Settings", "app_name", BRAND_NAME),
+		("Website Settings", "app_logo", BRAND_LOGO),
+		("Website Settings", "splash_image", BRAND_LOGO),
+		("Website Settings", "favicon", BRAND_FAVICON),
+		("Navbar Settings", "app_logo", BRAND_LOGO),
+	)
+	for doctype, fieldname, value in settings:
+		if not frappe.db.exists("DocType", doctype):
+			continue
+		current = frappe.db.get_single_value(doctype, fieldname) or ""
+		if _can_replace_brand_value(current):
+			frappe.db.set_single_value(doctype, fieldname, value)
+
+
+def _can_replace_brand_value(current: str) -> bool:
+	return (
+		current in REPLACEABLE_BRAND_NAMES
+		or current.startswith("/assets/frappe/")
+		or current.startswith("/assets/crm/")
+		or "api-commercial" in current.lower()
+	)
 
 
 def seed_phase_one_masters():
