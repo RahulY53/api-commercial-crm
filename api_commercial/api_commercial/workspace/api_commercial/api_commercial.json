@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"commercial_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Commercial work</b></span>\",\"col\":12}},{\"id\":\"my_accounts\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"My Accounts\",\"col\":3}},{\"id\":\"my_opportunities\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"My Opportunities\",\"col\":3}},{\"id\":\"customers\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customers\",\"col\":3}},{\"id\":\"products\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Products\",\"col\":3}},{\"id\":\"master_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Commercial records</b></span>\",\"col\":12}},{\"id\":\"master_card\",\"type\":\"card\",\"data\":{\"card_name\":\"Commercial Records\",\"col\":4}},{\"id\":\"admin_card\",\"type\":\"card\",\"data\":{\"card_name\":\"Configuration\",\"col\":4}}]",
+ "content": "[{\"id\":\"hero_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\"><b>Commercial command centre</b></span>\",\"col\":12}},{\"id\":\"hero_copy\",\"type\":\"paragraph\",\"data\":{\"text\":\"Customers, products, opportunities and commercial ownership in one secure workspace.\",\"col\":12}},{\"id\":\"hero_spacer\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"work_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h5\\\"><b>START HERE</b></span>\",\"col\":12}},{\"id\":\"sales_crm\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Sales CRM\",\"col\":4}},{\"id\":\"my_accounts\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"My Accounts\",\"col\":4}},{\"id\":\"my_opportunities\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"My Opportunities\",\"col\":4}},{\"id\":\"customers\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customers\",\"col\":4}},{\"id\":\"products\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Products\",\"col\":4}},{\"id\":\"opportunities\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Product Opportunities\",\"col\":4}},{\"id\":\"data_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h5\\\"><b>COMMERCIAL DATA</b></span>\",\"col\":12}},{\"id\":\"master_card\",\"type\":\"card\",\"data\":{\"card_name\":\"Customer & Product Records\",\"col\":6}},{\"id\":\"admin_card\",\"type\":\"card\",\"data\":{\"card_name\":\"Commercial Configuration\",\"col\":6}}]",
  "custom_blocks": [],
  "doctype": "Workspace",
  "for_user": "",
@@ -9,14 +9,14 @@
  "is_hidden": 0,
  "label": "Arkenstone CRM",
  "links": [
-  {"hidden": 0, "label": "Commercial Records", "link_count": 6, "type": "Card Break"},
+  {"hidden": 0, "label": "Customer & Product Records", "link_count": 6, "type": "Card Break"},
   {"hidden": 0, "label": "Customers", "link_to": "CRM Organization", "link_type": "DocType", "type": "Link"},
   {"hidden": 0, "label": "Contacts", "link_to": "Contact", "link_type": "DocType", "type": "Link"},
   {"hidden": 0, "label": "Manufacturing Sites", "link_to": "Manufacturing Site", "link_type": "DocType", "type": "Link"},
   {"hidden": 0, "label": "Contact Affiliations", "link_to": "Contact Affiliation", "link_type": "DocType", "type": "Link"},
   {"hidden": 0, "label": "Products", "link_to": "CRM Product", "link_type": "DocType", "type": "Link"},
   {"hidden": 0, "label": "Product Opportunities", "link_to": "Product Opportunity", "link_type": "DocType", "type": "Link"},
-  {"hidden": 0, "label": "Configuration", "link_count": 8, "type": "Card Break"},
+  {"hidden": 0, "label": "Commercial Configuration", "link_count": 8, "type": "Card Break"},
   {"hidden": 0, "label": "Regions", "link_to": "Region", "link_type": "DocType", "type": "Link"},
   {"hidden": 0, "label": "Region Memberships", "link_to": "Region Membership", "link_type": "DocType", "type": "Link"},
   {"hidden": 0, "label": "Account Assignments", "link_to": "Account Assignment", "link_type": "DocType", "type": "Link"},
@@ -45,10 +45,12 @@
  ],
  "sequence_id": 1,
  "shortcuts": [
-  {"label": "My Accounts", "link_to": "my-accounts", "type": "Page"},
-  {"label": "My Opportunities", "link_to": "my-opportunities", "type": "Page"},
-  {"label": "Customers", "link_to": "CRM Organization", "type": "DocType"},
-  {"label": "Products", "link_to": "CRM Product", "type": "DocType"}
+  {"color": "Grey", "label": "Sales CRM", "type": "URL", "url": "/crm"},
+  {"color": "Grey", "label": "My Accounts", "link_to": "my-accounts", "type": "Page"},
+  {"color": "Grey", "label": "My Opportunities", "link_to": "my-opportunities", "type": "Page"},
+  {"color": "Grey", "label": "Customers", "link_to": "CRM Organization", "type": "DocType"},
+  {"color": "Grey", "label": "Products", "link_to": "CRM Product", "type": "DocType"},
+  {"color": "Grey", "label": "Product Opportunities", "link_to": "Product Opportunity", "type": "DocType"}
  ],
  "title": "Arkenstone CRM"
 }

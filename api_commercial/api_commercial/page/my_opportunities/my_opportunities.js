@@ -27,14 +27,14 @@ function loadOpportunities(wrapper) {
 				{ label: __("Target Markets"), key: "target_markets" },
 				{ label: __("Estimated Potential"), key: "estimated_potential" },
 				{ label: __("Region"), key: "region" },
-				{ label: __("Stage"), render: (row) => ui.pill(row.current_stage) },
+				{ label: __("Stage"), render: (row) => ui.pill(row.current_stage_name) },
 				{
 					label: __("Probability"),
 					render: (row) => `${ui.escape(row.probability ?? 0)}%`,
 				},
 				{ label: __("Next Action"), key: "next_action" },
 				{ label: __("Due"), key: "next_action_due_date" },
-				{ label: __("Owner"), key: "opportunity_owner" },
+				{ label: __("Owner"), key: "opportunity_owner_name" },
 			],
 			rows,
 			__("My Opportunities")

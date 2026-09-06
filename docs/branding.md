@@ -31,6 +31,19 @@ Generation prompt:
 - Navbar Settings
 - the API Commercial app launcher and workspace label
 
+The redundant upstream **Frappe CRM** Desk workspace is hidden after migrate.
+Its portal remains available as **Sales CRM** from the Arkenstone workspace,
+so commercial users retain the supported CRM interface without a vendor-branded
+navigation entry.
+
+Frappe CRM v1.83.0 hardcodes its name and logo in several frontend components
+that have no supported branding hook. `docker/crm-branding.patch` holds the
+small, version-pinned source delta needed for those surfaces. The container
+startup script verifies the patch against the pinned CRM source, applies it
+once, and rebuilds the CRM frontend. A version mismatch stops startup rather
+than applying an unsafe partial patch. This keeps the exception explicit and
+avoids maintaining a fork.
+
 The setup routine replaces only empty values and known framework/default
 branding. If an administrator later installs a different custom brand, normal
 migrations preserve that choice.

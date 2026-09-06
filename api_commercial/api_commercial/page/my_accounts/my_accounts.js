@@ -24,7 +24,7 @@ function loadAccounts(wrapper) {
 				},
 				{ label: __("Region"), key: "region" },
 				{ label: __("Parent Account"), key: "parent_customer" },
-				{ label: __("Primary AM"), key: "primary_account_manager" },
+				{ label: __("Primary AM"), key: "primary_account_manager_name" },
 				{ label: __("Open Opportunities"), key: "open_opportunity_count" },
 				{ label: __("Next Action Due"), key: "next_action_due" },
 				{

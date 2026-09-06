@@ -1,6 +1,8 @@
 .api-commercial-page {
 	--ac-border: var(--border-color, #e5e7eb);
 	--ac-muted: var(--text-muted, #64748b);
+	--ac-ink: #10213b;
+	--ac-sapphire: #27567d;
 	display: grid;
 	gap: 1rem;
 }
@@ -12,9 +14,10 @@
 }
 
 .api-commercial-card {
-	background: var(--fg-color, #fff);
+	background: linear-gradient(145deg, var(--fg-color, #fff), #fbfcfe);
 	border: 1px solid var(--ac-border);
-	border-radius: 10px;
+	border-radius: 14px;
+	box-shadow: 0 8px 24px rgba(16, 33, 59, 0.06);
 	padding: 1rem;
 }
 
@@ -24,8 +27,9 @@
 }
 
 .api-commercial-metric {
+	color: var(--ac-ink);
 	font-size: 1.5rem;
-	font-weight: 600;
+	font-weight: 700;
 }
 
 .api-commercial-label {
@@ -65,9 +69,9 @@
 }
 
 .api-commercial-pill {
-	background: var(--blue-100, #eff6ff);
+	background: #edf3f8;
 	border-radius: 999px;
-	color: var(--blue-700, #1d4ed8);
+	color: var(--ac-sapphire);
 	display: inline-block;
 	font-size: 0.75rem;
 	padding: 0.15rem 0.5rem;
@@ -90,6 +94,126 @@
 	margin: 0.5rem 0;
 }
 
+/* Branded Desk workspace -------------------------------------------------- */
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) {
+	--ac-ink: #10213b;
+	--ac-sapphire: #27567d;
+	--ac-gold: #b6924a;
+	--ac-mist: #f2f5f8;
+}
+
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .page-head {
+	background: rgba(255, 255, 255, 0.94);
+	border-bottom: 1px solid rgba(39, 86, 125, 0.12);
+	backdrop-filter: blur(12px);
+}
+
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .title-area::before {
+	background: #10213b url("/assets/api_commercial/images/arkenstone-logo.png") center / cover no-repeat;
+	border: 1px solid rgba(182, 146, 74, 0.55);
+	border-radius: 10px;
+	box-shadow: 0 4px 12px rgba(16, 33, 59, 0.18);
+	content: "";
+	flex: 0 0 34px;
+	height: 34px;
+	margin-right: 0.65rem;
+	width: 34px;
+}
+
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .title-text {
+	color: var(--ac-ink);
+	font-weight: 750;
+	letter-spacing: -0.02em;
+}
+
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .page-body {
+	background:
+		radial-gradient(circle at 85% 0%, rgba(182, 146, 74, 0.1), transparent 24rem),
+		linear-gradient(180deg, #f8fafc 0%, #f3f6f8 100%);
+	min-height: calc(100vh - var(--navbar-height, 48px));
+}
+
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .desk-page {
+	max-width: 1120px;
+}
+
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .codex-editor__redactor {
+	padding-top: 1.25rem;
+}
+
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .ce-header .h3 {
+	color: var(--ac-ink);
+	font-size: clamp(1.45rem, 2.5vw, 2rem);
+	letter-spacing: -0.035em;
+}
+
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .ce-paragraph {
+	color: #5e6c7d;
+	font-size: 0.95rem;
+	line-height: 1.6;
+	max-width: 680px;
+}
+
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .ce-header .h5 {
+	color: #687789;
+	font-size: 0.72rem;
+	letter-spacing: 0.13em;
+}
+
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .widget {
+	border: 1px solid rgba(39, 86, 125, 0.13);
+	border-radius: 14px;
+	box-shadow: 0 8px 24px rgba(16, 33, 59, 0.055);
+}
+
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .shortcut-widget-box {
+	background: linear-gradient(145deg, #fff 0%, #f8fafc 100%);
+	min-height: 72px;
+	padding: 0.9rem 1rem;
+	transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+}
+
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .shortcut-widget-box:hover {
+	border-color: rgba(182, 146, 74, 0.65);
+	box-shadow: 0 12px 28px rgba(16, 33, 59, 0.1);
+	transform: translateY(-2px);
+}
+
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .shortcut-widget-box .widget-title {
+	color: var(--ac-ink);
+	font-weight: 650;
+}
+
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .links-widget-box {
+	background: rgba(255, 255, 255, 0.92);
+	padding: 0.35rem;
+}
+
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .links-widget-box .widget-head {
+	border-bottom: 1px solid rgba(39, 86, 125, 0.1);
+	padding: 0.85rem 0.9rem;
+}
+
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .links-widget-box .link-item {
+	border-radius: 9px;
+	margin: 0.15rem;
+	padding: 0.65rem 0.75rem;
+}
+
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .links-widget-box .link-item:hover {
+	background: var(--ac-mist);
+}
+
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .indicator-pill {
+	background: #edf3f8;
+	color: var(--ac-sapphire);
+}
+
+#page-Workspaces:has(.title-text[title="Arkenstone CRM"])
+	.sidebar-item-container[item-name="Frappe CRM"] {
+	display: none !important;
+}
+
 @media (max-width: 575px) {
 	.api-commercial-card {
 		padding: 0.75rem;
@@ -97,5 +221,32 @@
 
 	.api-commercial-table {
 		min-width: 640px;
+	}
+}
+
+/* Give useful page titles enough room in the narrow in-app panel. */
+@media (max-width: 767px) {
+	.page-head .page-title {
+		flex: 1 1 auto;
+		max-width: calc(100% - 96px);
+		width: auto;
+	}
+
+	.page-head .page-title .title-text {
+		font-size: 1.1rem;
+	}
+
+	#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .title-area::before {
+		flex-basis: 30px;
+		height: 30px;
+		width: 30px;
+	}
+
+	#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .codex-editor__redactor {
+		padding-top: 0.5rem;
+	}
+
+	#page-Workspaces:has(.title-text[title="Arkenstone CRM"]) .shortcut-widget-box {
+		min-height: 60px;
 	}
 }

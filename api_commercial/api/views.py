@@ -41,6 +41,7 @@ def get_my_accounts() -> list[dict]:
 
 	for account in accounts:
 		account.primary_account_manager = primary_managers.get(account.name)
+		account.primary_account_manager_name = _display_user(account.primary_account_manager)
 		account.open_opportunity_count = counts.get(account.name, 0)
 		account.next_action_due = next_due.get(account.name)
 	return accounts
@@ -67,6 +68,8 @@ def get_my_opportunities() -> list[dict]:
 	)
 	_apply_product_names(opportunities)
 	_apply_market_summary(opportunities)
+	_apply_stage_names(opportunities)
+	_apply_user_names(opportunities, ("opportunity_owner",))
 	return opportunities
 
 
@@ -95,6 +98,8 @@ def get_customer_360(customer: str) -> dict:
 		limit_page_length=PAGE_LENGTH,
 	)
 	_apply_product_names(opportunities)
+	_apply_stage_names(opportunities)
+	_apply_user_names(opportunities, ("opportunity_owner",))
 	estimated_potential = _estimated_potential(opportunities)
 
 	sites = frappe.get_list(
@@ -133,9 +138,9 @@ def get_customer_360(customer: str) -> dict:
 			"customer_name": doc.organization_name,
 			"region": doc.custom_region,
 			"parent_customer": doc.custom_parent_customer,
-			"primary_account_manager": primary_manager,
-			"global_account_manager": global_manager,
-			"region_head": region_head,
+			"primary_account_manager": _display_user(primary_manager),
+			"global_account_manager": _display_user(global_manager),
+			"region_head": _display_user(region_head),
 			"status": doc.custom_customer_status,
 			"is_key_account": doc.custom_is_key_account,
 		},
@@ -210,6 +215,7 @@ def get_product_opportunity_360(opportunity: str) -> dict:
 		"CRM Product", doc.product, ["product_name", "custom_molecule"], as_dict=True
 	) or frappe._dict()
 	product_owner = _current_product_owner(doc.product)
+	stage_name = frappe.db.get_value("Pipeline Stage", doc.current_stage, "stage_name")
 
 	return {
 		"opportunity": {
@@ -220,11 +226,12 @@ def get_product_opportunity_360(opportunity: str) -> dict:
 			"product_name": product.product_name or doc.product,
 			"molecule": product.custom_molecule,
 			"current_stage": doc.current_stage,
+			"current_stage_name": stage_name or doc.current_stage,
 			"probability": doc.probability,
 			"region": doc.region,
-			"opportunity_owner": doc.opportunity_owner,
-			"product_owner": product_owner,
-			"global_account_manager": _global_account_manager(doc.customer),
+			"opportunity_owner": _display_user(doc.opportunity_owner),
+			"product_owner": _display_user(product_owner),
+			"global_account_manager": _display_user(_global_account_manager(doc.customer)),
 			"manufacturing_site": doc.manufacturing_site,
 			"next_action": doc.next_action,
 			"next_action_due_date": doc.next_action_due_date,
@@ -248,16 +255,37 @@ def _visible_customer_family(customer: str) -> list[str]:
 
 
 def _customer_hierarchy_rows(current: str, visible_family: list[str]) -> list[dict]:
-	rows = frappe.get_all(
+	fields = [
+		"name",
+		"organization_name as customer_name",
+		"custom_parent_customer as parent_customer",
+		"custom_region as region",
+	]
+
+	# Descendants remain subject to normal record permissions. Ancestors are a
+	# deliberately limited exception: their basic identity is needed to render
+	# the selected customer's lineage, but no ancestor-owned commercial records
+	# are loaded by the surrounding Customer 360 queries.
+	rows = frappe.get_list(
 		"CRM Organization",
 		filters={"name": ("in", visible_family)},
-		fields=[
-			"name",
-			"organization_name as customer_name",
-			"custom_parent_customer as parent_customer",
-			"custom_region as region",
-		],
+		fields=fields,
 	)
+	ancestor_names = []
+	parent = frappe.db.get_value("CRM Organization", current, "custom_parent_customer")
+	while parent and parent not in ancestor_names:
+		ancestor_names.append(parent)
+		parent = frappe.db.get_value("CRM Organization", parent, "custom_parent_customer")
+	loaded_names = {row.name for row in rows}
+	missing_ancestors = [name for name in ancestor_names if name not in loaded_names]
+	if missing_ancestors:
+		rows.extend(
+			frappe.get_all(
+				"CRM Organization",
+				filters={"name": ("in", missing_ancestors)},
+				fields=fields,
+			)
+		)
 	by_name = {row.name: row for row in rows}
 	for row in rows:
 		level = 0
@@ -362,6 +390,42 @@ def _apply_product_names(rows: list):
 	}
 	for row in rows:
 		row.product_name = name_map.get(row.product, row.product)
+
+
+def _apply_stage_names(rows: list):
+	stages = {row.current_stage for row in rows if row.current_stage}
+	if not stages:
+		return
+	name_map = {
+		row.name: row.stage_name
+		for row in frappe.get_all(
+			"Pipeline Stage", filters={"name": ("in", list(stages))}, fields=["name", "stage_name"]
+		)
+	}
+	for row in rows:
+		row.current_stage_name = name_map.get(row.current_stage, row.current_stage)
+
+
+def _apply_user_names(rows: list, fields: tuple[str, ...]):
+	users = {row.get(field) for row in rows for field in fields if row.get(field)}
+	if not users:
+		return
+	name_map = {
+		row.name: row.full_name
+		for row in frappe.get_all(
+			"User", filters={"name": ("in", list(users))}, fields=["name", "full_name"]
+		)
+	}
+	for row in rows:
+		for field in fields:
+			value = row.get(field)
+			row[f"{field}_name"] = name_map.get(value, value)
+
+
+def _display_user(user: str | None) -> str | None:
+	if not user:
+		return None
+	return frappe.db.get_value("User", user, "full_name") or user
 
 
 def _apply_market_summary(rows: list):

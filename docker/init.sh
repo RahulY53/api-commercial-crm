@@ -7,6 +7,8 @@ CUSTOM_APP=api_commercial
 CUSTOM_APP_DIR="$BENCH_DIR/apps/$CUSTOM_APP"
 FRAPPE_REF=v15.120.0
 CRM_REF=v1.83.0
+CRM_BRANDING_PATCH=/workspace/docker/crm-branding.patch
+CRM_BRANDING_MARKER="$BENCH_DIR/apps/crm/.arkenstone-branding-v1-built"
 
 if [ ! -d "$BENCH_DIR/apps/frappe" ]; then
 	bench init --ignore-exist --skip-redis-config-generation "$BENCH_DIR" --version "$FRAPPE_REF"
@@ -24,6 +26,21 @@ sed -i '/watch/d' ./Procfile
 
 if [ ! -d "$BENCH_DIR/apps/crm" ]; then
 	bench get-app crm --branch "$CRM_REF"
+fi
+
+# The pinned CRM frontend hardcodes its product name and logo in a handful of
+# places with no extension hook. Keep that unavoidable branding delta explicit,
+# reviewable and version-checked instead of forking the upstream repository.
+if git -C "$BENCH_DIR/apps/crm" apply --check "$CRM_BRANDING_PATCH" 2>/dev/null; then
+	git -C "$BENCH_DIR/apps/crm" apply "$CRM_BRANDING_PATCH"
+elif ! git -C "$BENCH_DIR/apps/crm" apply --reverse --check "$CRM_BRANDING_PATCH" 2>/dev/null; then
+	printf '%s\n' "CRM branding patch does not match pinned CRM ref $CRM_REF" >&2
+	exit 1
+fi
+
+if [ ! -f "$CRM_BRANDING_MARKER" ]; then
+	bench build --app crm
+	touch "$CRM_BRANDING_MARKER"
 fi
 
 if ! grep -qx "$CUSTOM_APP" "$BENCH_DIR/sites/apps.txt"; then

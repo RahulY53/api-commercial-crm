@@ -77,6 +77,12 @@ def seed_branding():
 		if _can_replace_brand_value(current):
 			frappe.db.set_single_value(doctype, fieldname, value)
 
+	# The upstream CRM workspace duplicates this application's navigation and
+	# exposes the vendor name. Its portal remains available from the branded
+	# "Sales CRM" shortcut; only the redundant Desk sidebar entry is hidden.
+	if frappe.db.exists("Workspace", "Frappe CRM"):
+		frappe.db.set_value("Workspace", "Frappe CRM", "is_hidden", 1, update_modified=False)
+
 
 def _can_replace_brand_value(current: str) -> bool:
 	return (

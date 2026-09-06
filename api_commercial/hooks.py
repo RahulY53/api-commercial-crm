@@ -21,8 +21,16 @@ add_to_apps_screen = [
 	}
 ]
 
-app_include_css = "/assets/api_commercial/css/commercial.css"
+app_include_css = "/assets/api_commercial/css/commercial.css?v=2"
 app_include_js = "/assets/api_commercial/js/commercial_ui.js"
+
+doctype_list_js = {
+	"CRM Organization": "public/js/commercial_list_views.js",
+	"Manufacturing Site": "public/js/commercial_list_views.js",
+	"Contact Affiliation": "public/js/commercial_list_views.js",
+	"CRM Product": "public/js/commercial_list_views.js",
+	"Product Opportunity": "public/js/commercial_list_views.js",
+}
 
 after_install = "api_commercial.setup.after_install"
 after_migrate = "api_commercial.setup.after_migrate"
@@ -52,6 +60,17 @@ has_permission = {
 	"Opportunity Market": "api_commercial.permissions.visibility.has_opportunity_market_permission",
 	"Opportunity Stakeholder": "api_commercial.permissions.visibility.has_opportunity_stakeholder_permission",
 }
+
+# Frappe CRM v1.83 calls this newer telemetry endpoint, while the installed
+# Frappe v15.120 pulse client only exposes ``is_enabled``. Keep the upstream
+# apps untouched and bridge only the missing read-only method.
+override_whitelisted_methods = {
+	"frappe.utils.telemetry.pulse.client.boot_config": "api_commercial.compat.pulse_boot_config",
+	"crm.www.crm.get_context_for_dev": "api_commercial.compat.crm_dev_boot_config",
+}
+
+# Replace upstream CRM product copy at render time without modifying CRM core.
+update_website_context = "api_commercial.branding.update_website_context"
 
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [

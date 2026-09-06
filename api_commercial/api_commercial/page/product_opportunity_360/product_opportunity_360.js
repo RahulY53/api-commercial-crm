@@ -24,7 +24,7 @@ frappe.pages["product-opportunity-360"].on_page_show = function (wrapper) {
 				ui.details([
 					{ label: __("Customer"), value: data.opportunity.customer },
 					{ label: __("Product"), value: data.opportunity.product_name },
-					{ label: __("Stage"), html: ui.pill(data.opportunity.current_stage) },
+					{ label: __("Stage"), html: ui.pill(data.opportunity.current_stage_name) },
 					{ label: __("Probability"), value: `${data.opportunity.probability ?? 0}%` },
 					{ label: __("Region"), value: data.opportunity.region },
 					{ label: __("Owner"), value: data.opportunity.opportunity_owner },

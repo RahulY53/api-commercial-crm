@@ -41,6 +41,8 @@
  "search_fields": "contact,customer,manufacturing_site,designation,department",
  "sort_field": "modified",
  "sort_order": "DESC",
+ "show_title_field_in_link": 1,
  "states": [],
+ "title_field": "contact",
  "track_changes": 1
 }
