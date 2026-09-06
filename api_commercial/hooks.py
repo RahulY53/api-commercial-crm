@@ -10,6 +10,18 @@ app_license = "mit"
 
 required_apps = ["crm"]
 
+add_to_apps_screen = [
+	{
+		"name": "api_commercial",
+		"logo": "/assets/api_commercial/images/api-commercial.svg",
+		"title": "API Commercial",
+		"route": "/app/api-commercial",
+	}
+]
+
+app_include_css = "/assets/api_commercial/css/commercial.css"
+app_include_js = "/assets/api_commercial/js/commercial_ui.js"
+
 after_install = "api_commercial.setup.after_install"
 after_migrate = "api_commercial.setup.after_migrate"
 
@@ -17,6 +29,26 @@ doc_events = {
 	"CRM Organization": {
 		"validate": "api_commercial.services.customers.validate_customer",
 	},
+}
+
+permission_query_conditions = {
+	"CRM Organization": "api_commercial.permissions.visibility.get_crm_organization_permission_query_conditions",
+	"Manufacturing Site": "api_commercial.permissions.visibility.get_manufacturing_site_permission_query_conditions",
+	"Contact Affiliation": "api_commercial.permissions.visibility.get_contact_affiliation_permission_query_conditions",
+	"Contact": "api_commercial.permissions.visibility.get_contact_permission_query_conditions",
+	"Product Opportunity": "api_commercial.permissions.visibility.get_product_opportunity_permission_query_conditions",
+	"Opportunity Market": "api_commercial.permissions.visibility.get_opportunity_market_permission_query_conditions",
+	"Opportunity Stakeholder": "api_commercial.permissions.visibility.get_opportunity_stakeholder_permission_query_conditions",
+}
+
+has_permission = {
+	"CRM Organization": "api_commercial.permissions.visibility.has_crm_organization_permission",
+	"Manufacturing Site": "api_commercial.permissions.visibility.has_manufacturing_site_permission",
+	"Contact Affiliation": "api_commercial.permissions.visibility.has_contact_affiliation_permission",
+	"Contact": "api_commercial.permissions.visibility.has_contact_permission",
+	"Product Opportunity": "api_commercial.permissions.visibility.has_product_opportunity_permission",
+	"Opportunity Market": "api_commercial.permissions.visibility.has_opportunity_market_permission",
+	"Opportunity Stakeholder": "api_commercial.permissions.visibility.has_opportunity_stakeholder_permission",
 }
 
 # Each item in the list will be shown as an app in the apps page

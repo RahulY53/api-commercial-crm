@@ -71,14 +71,13 @@ Microsoft Graph, or LLM-specific code.
 
 1. **Complete:** Foundation: pinned environment, architecture records, CI, smoke tests.
 2. **Complete:** Organisation: Region, membership, account assignment, GAM hierarchy service.
-3. **Complete (model):** Customer: Organization extensions, Manufacturing Site,
-   Contact Affiliation. Customer-facing navigation remains in milestone 7.
-4. **Next:** Catalogue: CRM Product extensions and Product Responsibility.
-5. Opportunity: Product Opportunity, pipelines, stages, markets, stakeholders.
-6. Security: additive server-side visibility and persona tests.
-7. Experience: navigation, Customer 360, Product Opportunity 360.
-8. Acceptance: deterministic demo data and end-to-end persona verification.
-9. Closeout: administrator and upgrade documentation.
+3. **Complete:** Customer hierarchy, Manufacturing Site, and Contact Affiliation.
+4. **Complete:** CRM Product extensions and Product Responsibility.
+5. **Complete:** Product Opportunity, pipelines, stages, markets, and stakeholders.
+6. **Complete:** Additive server-side visibility and persona tests.
+7. **Complete:** Navigation, Customer 360, and Product Opportunity 360.
+8. **Complete:** Deterministic fictional demo data and automated persona verification.
+9. **Complete:** Developer, manual-validation, and future-boundary documentation.
 
 ## Version-specific constraints
 

@@ -42,9 +42,9 @@ rather than per-row recursion. Role permission remains required before a
 record-level hook can allow an operation.
 
 Standard `Contact` needs special care because Frappe and CRM already provide
-permission/class hooks. The implementation will preserve those constraints and
-add affiliation access without replacing CRM's class override. Tests must cover
-both direct document access and list visibility.
+permission/class hooks. The implementation preserves those constraints and adds
+affiliation access without replacing CRM's class override. Tests cover both
+direct document access and list visibility.
 
 ## Functional roles
 
@@ -71,8 +71,9 @@ policy says otherwise.
 
 Domain records enable change tracking. Assignments, stage transitions, derived
 Region changes, ownership changes, and duplicate overrides remain explainable.
-The permission service will expose an administrator-facing reason result so an
-administrator can answer why a user can access a record.
+Access paths are represented by dated Account Assignments, Region Memberships,
+Product Responsibilities, explicit ownership, or broad read roles, so an
+administrator can inspect why a user has access without relying on UI state.
 
 ## Required tests
 

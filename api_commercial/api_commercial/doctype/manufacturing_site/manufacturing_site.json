@@ -27,7 +27,14 @@
  "naming_rule": "Expression",
  "permissions": [
   {"create": 1, "delete": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "System Manager", "share": 1, "write": 1},
-  {"create": 1, "delete": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "CRM Admin", "share": 1, "write": 1}
+  {"create": 1, "delete": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "CRM Admin", "share": 1, "write": 1},
+  {"create": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "Account Manager", "write": 1},
+  {"create": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "Region Head", "write": 1},
+  {"create": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "Global Account Manager", "write": 1},
+  {"create": 1, "print": 1, "read": 1, "role": "Business Development", "write": 1},
+  {"print": 1, "read": 1, "role": "Customer Service"},
+  {"print": 1, "read": 1, "role": "Commercial/Pricing"},
+  {"export": 1, "print": 1, "read": 1, "report": 1, "role": "Leadership"}
  ],
  "search_fields": "site_name,customer,city,country",
  "sort_field": "modified",

@@ -1,0 +1,13 @@
+{
+ "doctype": "Page",
+ "module": "Api Commercial",
+ "name": "customer-360",
+ "page_name": "customer-360",
+ "roles": [
+  {"role": "Account Manager"}, {"role": "Region Head"}, {"role": "Global Account Manager"},
+  {"role": "Product Manager"}, {"role": "Business Development"}, {"role": "Customer Service"},
+  {"role": "Commercial/Pricing"}, {"role": "Leadership"}, {"role": "CRM Admin"}, {"role": "System Manager"}
+ ],
+ "standard": "Yes",
+ "title": "Customer 360"
+}

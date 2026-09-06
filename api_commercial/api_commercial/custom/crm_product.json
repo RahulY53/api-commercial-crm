@@ -1,0 +1,97 @@
+{
+ "custom_fields": [
+  {
+   "dt": "CRM Product",
+   "fieldname": "custom_api_commercial_section",
+   "fieldtype": "Section Break",
+   "insert_after": "description",
+   "label": "API Commercial"
+  },
+  {
+   "dt": "CRM Product",
+   "fieldname": "custom_molecule",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "insert_after": "custom_api_commercial_section",
+   "label": "Molecule",
+   "search_index": 1
+  },
+  {
+   "dt": "CRM Product",
+   "fieldname": "custom_product_category",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "insert_after": "custom_molecule",
+   "label": "Category",
+   "options": "API Product Category",
+   "search_index": 1
+  },
+  {
+   "dt": "CRM Product",
+   "fieldname": "custom_therapeutic_area",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "insert_after": "custom_product_category",
+   "label": "Therapeutic Area",
+   "options": "Therapeutic Area",
+   "search_index": 1
+  },
+  {
+   "dt": "CRM Product",
+   "fieldname": "custom_api_commercial_column",
+   "fieldtype": "Column Break",
+   "insert_after": "custom_therapeutic_area"
+  },
+  {
+   "dt": "CRM Product",
+   "fieldname": "custom_commercial_status",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "insert_after": "custom_api_commercial_column",
+   "label": "Commercial Status",
+   "options": "Product Commercial Status",
+   "search_index": 1
+  },
+  {
+   "dt": "CRM Product",
+   "fieldname": "custom_standard_uom",
+   "fieldtype": "Data",
+   "insert_after": "custom_commercial_status",
+   "label": "Standard UOM"
+  },
+  {
+   "dt": "CRM Product",
+   "fieldname": "custom_standard_pack_size",
+   "fieldtype": "Float",
+   "insert_after": "custom_standard_uom",
+   "label": "Standard Pack Size",
+   "non_negative": 1,
+   "precision": "3"
+  }
+ ],
+ "custom_perms": [
+  {"create": 1, "delete": 1, "email": 1, "export": 1, "parent": "CRM Product", "permlevel": 0, "print": 1, "read": 1, "report": 1, "role": "System Manager", "share": 1, "write": 1},
+  {"create": 1, "delete": 1, "email": 1, "export": 1, "parent": "CRM Product", "permlevel": 0, "print": 1, "read": 1, "report": 1, "role": "CRM Admin", "share": 1, "write": 1},
+  {"export": 1, "parent": "CRM Product", "permlevel": 0, "print": 1, "read": 1, "report": 1, "role": "Sales Manager"},
+  {"parent": "CRM Product", "permlevel": 0, "print": 1, "read": 1, "role": "Sales User"},
+  {"parent": "CRM Product", "permlevel": 0, "print": 1, "read": 1, "role": "Account Manager"},
+  {"parent": "CRM Product", "permlevel": 0, "print": 1, "read": 1, "role": "Region Head"},
+  {"parent": "CRM Product", "permlevel": 0, "print": 1, "read": 1, "role": "Global Account Manager"},
+  {"parent": "CRM Product", "permlevel": 0, "print": 1, "read": 1, "role": "Product Manager"},
+  {"parent": "CRM Product", "permlevel": 0, "print": 1, "read": 1, "role": "Business Development"},
+  {"parent": "CRM Product", "permlevel": 0, "print": 1, "read": 1, "role": "Customer Service"},
+  {"parent": "CRM Product", "permlevel": 0, "print": 1, "read": 1, "role": "Commercial/Pricing"},
+  {"parent": "CRM Product", "permlevel": 0, "print": 1, "read": 1, "role": "Leadership"}
+ ],
+ "doctype": "CRM Product",
+ "links": [
+  {"group": "API Commercial", "link_doctype": "Product Responsibility", "link_fieldname": "product", "parent": "CRM Product"},
+  {"group": "API Commercial", "link_doctype": "Product Opportunity", "link_fieldname": "product", "parent": "CRM Product"}
+ ],
+ "property_setters": [],
+ "sync_on_migrate": 1
+}

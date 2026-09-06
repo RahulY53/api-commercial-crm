@@ -1,0 +1,14 @@
+{
+ "doctype": "Page",
+ "module": "Api Commercial",
+ "name": "my-accounts",
+ "page_name": "my-accounts",
+ "roles": [
+  {"role": "Account Manager"}, {"role": "Region Head"}, {"role": "Global Account Manager"},
+  {"role": "Product Manager"},
+  {"role": "Business Development"}, {"role": "Customer Service"}, {"role": "Commercial/Pricing"},
+  {"role": "Leadership"}, {"role": "CRM Admin"}, {"role": "System Manager"}
+ ],
+ "standard": "Yes",
+ "title": "My Accounts"
+}

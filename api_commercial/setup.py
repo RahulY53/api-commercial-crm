@@ -29,6 +29,18 @@ ACCOUNT_ASSIGNMENT_TYPES = (
 	("Temporary Cover", False),
 )
 
+OPPORTUNITY_STAKEHOLDER_ROLES = (
+	"Decision Maker",
+	"Procurement",
+	"Technical Evaluator",
+	"Quality",
+	"Regulatory",
+	"Sponsor",
+	"Champion",
+	"Influencer",
+	"Blocker",
+)
+
 
 def after_install():
 	seed_phase_one_masters()
@@ -63,6 +75,12 @@ def seed_phase_one_masters():
 				"cascade_to_descendants": cascades,
 			},
 		)
+
+	if frappe.db.table_exists("Opportunity Stakeholder Role"):
+		for role_name in OPPORTUNITY_STAKEHOLDER_ROLES:
+			insert_master_if_missing(
+				"Opportunity Stakeholder Role", role_name, {"role_name": role_name, "active": 1}
+			)
 
 
 def insert_master_if_missing(doctype: str, name: str, values: dict):

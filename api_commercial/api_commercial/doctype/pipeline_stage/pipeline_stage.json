@@ -1,0 +1,37 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "format:PS-{#####}",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["pipeline", "stage_name", "sequence", "active", "stage_settings", "default_probability", "recommended_max_days", "is_won_stage", "is_lost_stage"],
+ "fields": [
+  {"fieldname": "pipeline", "fieldtype": "Link", "in_list_view": 1, "in_standard_filter": 1, "label": "Pipeline", "options": "Pipeline", "reqd": 1, "search_index": 1},
+  {"fieldname": "stage_name", "fieldtype": "Data", "in_global_search": 1, "in_list_view": 1, "label": "Stage Name", "reqd": 1},
+  {"fieldname": "sequence", "fieldtype": "Int", "in_list_view": 1, "label": "Sequence", "reqd": 1},
+  {"default": "1", "fieldname": "active", "fieldtype": "Check", "in_list_view": 1, "label": "Active"},
+  {"fieldname": "stage_settings", "fieldtype": "Section Break", "label": "Stage Settings"},
+  {"default": "0", "fieldname": "default_probability", "fieldtype": "Percent", "label": "Default Probability", "reqd": 1},
+  {"fieldname": "recommended_max_days", "fieldtype": "Int", "label": "Recommended Maximum Days"},
+  {"default": "0", "fieldname": "is_won_stage", "fieldtype": "Check", "label": "Won Stage"},
+  {"default": "0", "fieldname": "is_lost_stage", "fieldtype": "Check", "label": "Lost Stage"}
+ ],
+ "links": [],
+ "module": "Api Commercial",
+ "name": "Pipeline Stage",
+ "naming_rule": "Expression",
+ "permissions": [
+  {"create": 1, "delete": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "System Manager", "share": 1, "write": 1},
+  {"create": 1, "delete": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "CRM Admin", "share": 1, "write": 1},
+  {"read": 1, "role": "Account Manager"}, {"read": 1, "role": "Region Head"},
+  {"read": 1, "role": "Global Account Manager"}, {"read": 1, "role": "Product Manager"},
+  {"read": 1, "role": "Business Development"}, {"read": 1, "role": "Customer Service"},
+  {"read": 1, "role": "Commercial/Pricing"}, {"read": 1, "role": "Leadership"}
+ ],
+ "search_fields": "stage_name,pipeline",
+ "sort_field": "sequence",
+ "sort_order": "ASC",
+ "states": [],
+ "title_field": "stage_name",
+ "track_changes": 1
+}

@@ -1,0 +1,31 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:role_name",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["role_name", "active", "description"],
+ "fields": [
+  {"fieldname": "role_name", "fieldtype": "Data", "in_global_search": 1, "in_list_view": 1, "label": "Role Name", "reqd": 1, "unique": 1},
+  {"default": "1", "fieldname": "active", "fieldtype": "Check", "in_list_view": 1, "label": "Active"},
+  {"fieldname": "description", "fieldtype": "Small Text", "label": "Description"}
+ ],
+ "links": [],
+ "module": "Api Commercial",
+ "name": "Opportunity Stakeholder Role",
+ "naming_rule": "By fieldname",
+ "permissions": [
+  {"create": 1, "delete": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "System Manager", "share": 1, "write": 1},
+  {"create": 1, "delete": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "CRM Admin", "share": 1, "write": 1},
+  {"read": 1, "role": "Account Manager"}, {"read": 1, "role": "Region Head"},
+  {"read": 1, "role": "Global Account Manager"}, {"read": 1, "role": "Product Manager"},
+  {"read": 1, "role": "Business Development"}, {"read": 1, "role": "Customer Service"},
+  {"read": 1, "role": "Commercial/Pricing"}, {"read": 1, "role": "Leadership"}
+ ],
+ "sort_field": "role_name",
+ "sort_order": "ASC",
+ "states": [],
+ "title_field": "role_name",
+ "track_changes": 1
+}
